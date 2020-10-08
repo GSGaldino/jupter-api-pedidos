@@ -7,6 +7,22 @@ module.exports = {
 
     res.json(data)
   },
+
+  async single(req, res){
+    const {id_pedido} = req.params;
+    const pedido = await connection('pedidos')
+      .where('id_pedido', id_pedido)
+      .select('*')
+      .first();
+
+    if(!pedido){
+      return res.status(404).json({
+        message: 'Nenhum pedido encontrado com este id!'
+      })
+    }
+
+    res.json(pedido)
+  },
   
   async create(req, res){
     const id_pedido = crypto.randomBytes(10).toString('HEX');
