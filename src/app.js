@@ -12,7 +12,10 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+  origin: 'https://jupter-frontend.vercel.app/',
+  optionsSuccessStatus: 200
+}));
 app.use(express.json());
 
 app.get('/', (req, res) => {
