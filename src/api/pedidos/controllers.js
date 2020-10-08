@@ -38,7 +38,8 @@ module.exports = {
       });
 
     if(inserted){
-      return res.json(id_pedido);
+      return res.writeHead(200, {'Content-Type': 'application/json'})
+
     };
   }
 }
