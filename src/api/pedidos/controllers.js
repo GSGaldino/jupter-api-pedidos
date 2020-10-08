@@ -25,6 +25,7 @@ module.exports = {
   },
   
   async create(req, res){
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     const id_pedido = crypto.randomBytes(10).toString('HEX');
     const {produto_pedido, data_pedido, data_entrega} = req.body;
 
